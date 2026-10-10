@@ -1,0 +1,18 @@
+# 统一换行符，避免 Windows 与 macOS/Linux 协作出出现整文件 diff
+* text=auto
+
+*.py   text eol=lf
+*.md   text eol=lf
+*.yml  text eol=lf
+*.yaml text eol=lf
+*.txt  text eol=lf
+*.csv  text eol=lf
+*.json text eol=lf
+
+# 二进制文件不做换行转换
+*.pdf  binary
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.ico  binary
+*.sqlite3 binary

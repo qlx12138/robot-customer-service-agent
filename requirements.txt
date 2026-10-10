@@ -1,0 +1,12 @@
+# 直接依赖（未锁版本，建议在自己的虚拟环境中执行 pip freeze > requirements.lock.txt 后固定）
+streamlit
+langchain
+langchain-core
+langchain-community
+langchain-chroma
+langchain-text-splitters
+langgraph
+chromadb
+dashscope
+pypdf
+PyYAML

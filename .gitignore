@@ -1,0 +1,43 @@
+# ---------- 密钥与本地配置（务必不要提交）----------
+# config/rag.yml 内含 DashScope API Key，请从 config/rag.yml.example 复制后本地填写
+config/rag.yml
+config/*.local.yml
+.env
+.env.*
+!.env.example
+
+# ---------- 运行产物 ----------
+logs/
+output/
+tmp/
+md5.text
+chroma_db/
+*.sqlite3
+
+# ---------- Python ----------
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# ---------- 编辑器与系统 ----------
+.vscode/*
+!.vscode/settings.json
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*~
