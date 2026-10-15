@@ -44,6 +44,9 @@ class ReactAgent:
         res = self.agent.stream(input_dict, stream_mode="values", context={"report":False})
         for chunk in res:
             latest_message = chunk["messages"][-1]
+            # stream_mode="values" 会先回放输入的用户消息，跳过它避免在助手气泡回显问题
+            if getattr(latest_message, "type", None) in ("user", "human"):
+                continue
             if latest_message.content:
                 yield latest_message.content.strip() + '\n'
 

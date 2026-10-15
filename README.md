@@ -23,7 +23,7 @@
 | 语言 | Python 3.12 |
 | 对话界面 | Streamlit |
 | Agent 框架 | LangChain（`create_agent` + middleware）、LangGraph 运行时 |
-| 大模型 | 阿里云百炼 `qwen3-max` |
+| 大模型 | 阿里云百炼 `qwen-plus` |
 | 向量模型 | 阿里云百炼 `text-embedding-v4` |
 | 向量库 | Chroma（本地持久化） |
 | 配置 | YAML（`config/*.yml`） |
@@ -110,7 +110,7 @@ streamlit run app.py
 
 ## 设计要点
 
-**配置与代码分离。** `utils/config_handler.py` 在模块导入时统一加载 YAML 配置，`utils/path_tool.py` 统一把相对路径解析为基于项目根目录的绝对路径，因此脚本在任意工作目录下都能正确定位资源文件。
+**配置与代码分离。** `utils/config_handler.py` 在模块导入时统一加载 YAML 配置，`utils/path_tool.py` 统一把相对路径解析为基于项目根目录的绝对路径，因此脚本在任意工作目录下都能正确定位资源文件。向量库的持久化目录同样以项目根为基准锚定，因此无论从哪个工作目录启动，读写到的都是同一个 chroma_db，不会因工作目录不同而散落出多个知识库。
 
 **用中间件而不是散落的日志语句。** `agent/tools/middleware.py` 通过 `@wrap_tool_call` 统一捕获每个工具的调用与结果，`@before_model` 记录模型调用前的消息条数，`@dynamic_prompt` 在每次生成提示词前根据 `runtime.context` 判断当前是否处于报告场景，从而在同一套 Agent 上切换「普通问答」与「报告生成」两套系统提示词。业务代码中没有任何日志埋点。
 
@@ -144,7 +144,8 @@ streamlit run app.py
 
 [`docs/enterprise-roadmap/`](docs/enterprise-roadmap/README.md) 存放企业级演进的设计文档（**仅设计，未实现**）：
 
-- **`企业级优化蓝图.md`** —— 与生产级产品的差距诊断、目标架构与目标目录结构、C01 ~ C10 待确认决策项。
+- **`企业级优化蓝图.md`** —— 与生产级产品的差距诊断、目标架构与目标目录结构、C01 ~ C10 待确认决策项，以及 WS-0 ~ WS-7 分工作区执行方案与 M1 ~ M3 验收门槛。
+- **`智能服务Agent_WS1至WS4连续实施方案.md`** —— WS-1 ~ WS-4 的连续实施方案：统一工作区根目录、各工作区交付物与验收口径。
 
 该文档不改变本 Demo 的现有行为；其描述的目标工程为独立新建项目，不在本仓库内落地。
 

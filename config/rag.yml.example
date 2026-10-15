@@ -2,7 +2,7 @@
 # config/rag.yml 已被 .gitignore 排除，不会进入版本库。
 # 请勿把真实 Key 写进本示例文件。
 
-chat_model_name: qwen3-max
+chat_model_name: qwen-plus
 embedding_model_name: text-embedding-v4
 
 # 阿里云百炼（DashScope）API Key，在控制台「API-KEY 管理」中创建

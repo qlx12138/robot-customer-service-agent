@@ -1,6 +1,7 @@
 {
     "python.analysis.extraPaths": [
-        "${workspaceFolder}"
+        "${workspaceFolder}",
+        "${workspaceFolder}/project"
     ],
     "python.analysis.autoImportCompletions": true,
     "python.analysis.indexing": true,

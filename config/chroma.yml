@@ -1,4 +1,11 @@
 collection_name: agent
+# 向量库持久化目录。
+# 代码会经 utils/path_tool.get_abs_path() 解析本项：写相对路径时以【项目根目录】为基准，
+# 因此无论从哪个工作目录启动（项目根、rag\、agent\ 等），读写到的都是同一个库，
+# 不会因为工作目录不同而在各处生成多个 chroma_db。
+# 如需放到别处，也可以直接写绝对路径（注意 Windows 路径请用单引号或正斜杠）：
+#   Windows:     persist_directory: 'D:\LLM_study\Stage3_Analysis_Agent\project\chroma_db'
+#   macOS/Linux: persist_directory: /Users/<your-name>/robot-customer-service-agent/chroma_db
 persist_directory: chroma_db
 k: 3
 data_path: data

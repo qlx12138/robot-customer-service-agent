@@ -35,6 +35,6 @@ if prompt:
                 cache_list.append(chunk)
                 yield chunk
 
-        st.chat_message("assistent").write_stream(capture(res_stream, reponse_messages))
+        st.chat_message("assistant").write_stream(capture(res_stream, reponse_messages))
         st.session_state["message"].append({"role":"assistant", "content":reponse_messages[-1]})
         st.rerun()
